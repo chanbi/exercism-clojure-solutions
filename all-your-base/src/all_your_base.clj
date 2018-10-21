@@ -10,7 +10,7 @@
         :else (loop [digits '() num number]
                 (if (zero? num) digits
                   (recur (cons (rem num base) digits)
-                         (quot num base))))))
+                        (quot num base))))))
                 
 (defn to-decimal [digits base]
   {:pre [(seq? digits) (digits? digits base) (base? base)]
@@ -18,4 +18,4 @@
   (when (not (empty? digits)) (reduce #(+ (* base %1) %2) 0 digits)))
 
 (defn convert [in-base digits out-base] 
-  (try (to-base (to-decimal digits in-base) out-base) (catch AssertionError e nil))
+  (try (to-base (to-decimal digits in-base) out-base) (catch AssertionError e nil)))
