@@ -1,24 +1,21 @@
 (ns all-your-base)
 
+(defn- base? [base] (> base 1))
+(defn- digits? [digits base] (every? #(contains? (set (range base)) %) digits))
+
 (defn to-base [number base]
-  (if (nil? number) '()
-    (if (zero? number) '(0)
-      (loop [digits '() num number]
-        (if (zero? num) digits
-          (recur (conj digits (rem num base))
-                (quot num base)))))))
-
+  {:pre [(number? number) (base? base)]
+   :post [(seq? %) (digits? % base)]}
+  (cond (nil? number) '() (zero? number) '(0)
+        :else (loop [digits '() num number]
+                (if (zero? num) digits
+                  (recur (cons (rem num base) digits)
+                         (quot num base))))))
+                
 (defn to-decimal [digits base]
-  (if (empty? digits) nil 
-    (apply + (map-indexed #(apply * %2 (repeat %1 base)) (reverse digits)))))
-
-(defn valid-digits? [digits base]
-  (every? #(and (not (neg? %)) (< % base)) digits))
-
-(defn- convert-impl [in-base digits out-base] 
-  {:pre  [(> in-base 1) (> out-base 1) (valid-digits? digits in-base)]
-   :post [(valid-digits? % out-base)]}
-  (to-base (to-decimal digits in-base) out-base))
+  {:pre [(seq? digits) (digits? digits base) (base? base)]
+   :post [(number? %)]}
+  (when (not (empty? digits)) (reduce #(+ (* base %1) %2) 0 digits)))
 
 (defn convert [in-base digits out-base] 
-  (try (convert-impl in-base digits out-base) (catch AssertionError e nil)))
+  (try (to-base (to-decimal digits in-base) out-base) (catch AssertionError e nil))
