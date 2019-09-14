@@ -1,14 +1,14 @@
 {
-	"name": "Exercism Clojure",
-	"dockerFile": "Dockerfile",
-	"extensions": [
-        "editorconfig.editorconfig",
-        "ms-azuretools.vscode-docker",
-        "davidanson.vscode-markdownlint",
-		"betterthantomorrow.calva",
-		"coenraads.bracket-pair-colorizer-2"
-	],
-	"settings":{
-		"calva.jokerPath": "/usr/bin"
-	}
+  "name": "Exercism Clojure",
+  "dockerFile": "Dockerfile",
+  "extensions": [
+    "editorconfig.editorconfig",
+    "davidanson.vscode-markdownlint",
+    "betterthantomorrow.calva",
+    "coenraads.bracket-pair-colorizer-2",
+    "shaunlebron.vscode-parinfer"
+  ],
+  "settings": {
+    "calva.jokerPath": "/usr/bin"
+  }
 }
