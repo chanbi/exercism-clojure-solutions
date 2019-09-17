@@ -8,8 +8,8 @@
 
 (defn classify [number]
   (if (pos? number)
-    (cond
-      (= (aliquot-sum number) number) :perfect
-      (> (aliquot-sum number) number) :abundant
-      :else :deficient)
+    (condp apply [(aliquot-sum number) number]
+      = :perfect
+      > :abundant
+      < :deficient)
     (throw (IllegalArgumentException.))))
