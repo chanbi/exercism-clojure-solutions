@@ -8,7 +8,7 @@
 
 (defn nth-prime [number]
   {:pre [(number? number)]
-   post [(number? %)]}
+   :post [(number? %)]}
   (if (pos? number)
     (nth (filter prime? (range)) (dec number))
     (throw (IllegalArgumentException.))))
