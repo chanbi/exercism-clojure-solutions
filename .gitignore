@@ -2,3 +2,5 @@
 **/.lein-repl-history
 **/target/*
 **/.solution.json
+**/.exercism/metadata.json
+**/.nrepl-port
