@@ -1,34 +1,25 @@
 (ns complex-numbers)
 
-(defn real [[a b]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn add [[a b] [c d]]
+  [(+ a c) (+ b d)])
 
-(defn imaginary [[a b]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn sub [[a b] [c d]]
+  [(- a c) (- b d)])
 
-(defn abs [[a b]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn mul [[a b] [c d]]
+  [(- (* a c) (* b d))
+   (+ (* a d) (* b c))])
 
-(defn conjugate [[a b]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn div [[a b] [c d]]
+  (let [divisor (+ (* c c) (* d d))]
+    [(double (/ (+ (* a c) (* b d)) divisor))
+     (double (/ (- (* b c) (* a d)) divisor))]))
 
-(defn add [[a b] [c d]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn abs [[a b]]
+  (Math/sqrt (+ (* a a) (* b b))))
 
+(defn conjugate [[a b]] [a (- b)])
 
-(defn sub [[a b] [c d]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn real [[a b]] a)
 
-(defn mul [[a b] [c d]] ;; <- arglist goes here
-  ;; your code goes here
-  )
-
-(defn div [[a b] [c d]] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn imaginary [[a b]] b)
