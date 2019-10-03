@@ -1,14 +1,10 @@
 (ns rna-transcription)
 
-(defn- transcribe [char]
-  (case char
-    \C \G
-    \G \C
-    \A \U
-    \T \A
-    (throw (AssertionError.))))
-
 (defn to-rna [dna]
-  {:pre [(string? dna)]
+  {:pre [(string? dna) (re-matches #"[ACGT]*" dna)]
    :post [(string? %)]}
-  (apply str (map transcribe dna)))
+  (let [swap {\G \C
+              \C \G
+              \T \A
+              \A \U}]
+    (apply str (map #(get swap %) dna))))
