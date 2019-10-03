@@ -1,7 +1,6 @@
 (ns hello-world)
 
-(defn hello 
+(defn hello
   "Say hello to the world."
   [& args]
-  "Hello, World!"
-)
+  "Hello, World!")
