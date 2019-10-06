@@ -4,11 +4,14 @@
   "extensions": [
     "editorconfig.editorconfig",
     "davidanson.vscode-markdownlint",
-    "betterthantomorrow.calva",
-    "coenraads.bracket-pair-colorizer-2",
-    "shaunlebron.vscode-parinfer"
+    "betterthantomorrow.calva"
   ],
   "settings": {
-    "calva.jokerPath": "/usr/bin"
+    "calva.evalOnSave": true,
+    "calva.jokerPath": "/usr/bin",
+    "calva.lintOnSave": true,
+    "calva.testOnSave": true,
+    "calva.fmt.newIndentEngine": true,
+    "calva.fmt.removeConsecutiveBlankLines": true
   }
 }
